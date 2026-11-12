@@ -1,7 +1,7 @@
-# WinPhone Pinyin Keyboard
+# Linux Pinyin Keyboard WP
 
 由 **ycrrongos 使用 Codex 开发**的离线中文拼音核心与 Windows Phone 风格
-Denial 屏幕键盘集成。桌面仓库：[win10x-denial-desktop](https://github.com/ycrrongos/win10x-denial-desktop)。
+Denial 屏幕键盘集成。桌面仓库：[win10x-denial-desktop](https://github.com/ycrrongos/linux-winphone-desktop)。
 
 支持全拼、简拼、末音节补全、分词组合、`xi'an` 分隔、ü/v、键盘候选横滑/展开、
 中英文切换和本地词频。密码/PIN/敏感输入直接输入，不查询候选或学习。

@@ -2,7 +2,7 @@ name: winphone_pinyin
 description: Offline pinyin engine and WP-style Denial keyboard integration. Built with Codex.
 version: 0.1.0
 publish_to: none
-repository: https://github.com/ycrrongos/winphone-pinyin-keyboard
+repository: https://github.com/ycrrongos/linux-pinyin-keybord-wp
 environment:
   sdk: ^3.13.0
 dev_dependencies:
