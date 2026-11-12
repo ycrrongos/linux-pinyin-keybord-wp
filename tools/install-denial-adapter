@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+"""Install into a disposable pinned Denial 0.6.2 desktop plugin checkout."""
+from pathlib import Path
+import sys,shutil
+root=Path(__file__).resolve().parents[1]
+host=Path(sys.argv[1]).resolve()
+edge=host/'lib/src/widgets/edge_panel_layer.dart'
+s=edge.read_text()
+old="import 'osk/shell_osk_panel.dart';"
+constructor='child: ShellOskPanel('
+if "import 'osk/pinyin_keyboard.dart';" in s:
+ if 'child: Win10xPinyinKeyboard(' not in s:raise SystemExit('Partial adapter; inspect host first')
+else:
+ if s.count(old)!=1 or s.count(constructor)!=1:raise SystemExit('Unexpected pinned host; no files changed')
+ s=s.replace(old,old+"\nimport 'osk/pinyin_keyboard.dart';").replace(constructor,'child: Win10xPinyinKeyboard(')
+osk=host/'lib/src/widgets/osk';state=host/'lib/src/state'
+if not osk.is_dir() or not state.is_dir():raise SystemExit('Invalid Denial plugin')
+for name in ['pinyin_engine.dart','pinyin_session.dart']:shutil.copy2(root/'lib/src'/name,osk/name)
+shutil.copy2(root/'integration/denial/pinyin_keyboard.dart',osk/'pinyin_keyboard.dart')
+shutil.copy2(root/'integration/denial/wp_motion.dart',state/'win10x_wp_motion.dart')
+edge.write_text(s)
+print('Adapter installed. Add winphone_pinyin dependency/assets to the host app and use the pinned Denial engine.')
