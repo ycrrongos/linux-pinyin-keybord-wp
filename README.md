@@ -53,3 +53,16 @@ Sixuan IME 仅作架构研究参考，没有复制其 PolyForm Noncommercial 代
 
 已在 Nubia Z60 Ultra 的原生 Linux/Denial 会话中，通过屏幕键盘候选把“你好”
 写入 GTK 应用输入框。其他应用、设备与独立适配部署仍需各自验收。
+
+## 编辑与电脑键盘
+
+工具栏固定入口切换“编辑 / 电脑 / 数字区”；空格横滑移动光标，支持选择、按词移动、
+复制剪切粘贴、撤销和重做（Linux Ctrl+Shift+Z）。电脑布局含 F1–F12、Fn、方向/导航、
+Ctrl/Alt/Shift/Win/AltGr 和数字区。修饰键单击一次、长按锁定，每次原生组合发送后成对释放。
+电脑主键区仍支持拼音候选；敏感输入禁用复制剪切与全选，不学习词频。
+
+**完整电脑按键需重建原生代理**，上游 Denial0.6.2 缺少相关命名按键映射。
+使用 `tools/win10x-denial-native` / `tools/prepare-denial-native-sysroot`，见
+[denial/native/README.md](denial/native/README.md)。适配安装器包含配套的组合键与空格手势补丁。
+宿主需提供 WP 主题（完整实现见桌面仓库）；原生应用中的复制/撤销能力由应用决定。
+新增功能通过本地逻辑/界面检查和 x64/ARM64 原生构建，尚未作本轮手机实测。

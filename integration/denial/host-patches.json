@@ -1,0 +1,37 @@
+[
+  [
+    "lib/src/widgets/edge_panel_layer.dart",
+    "import 'osk/shell_osk_panel.dart';",
+    "import 'osk/shell_osk_panel.dart';\nimport 'osk/pinyin_keyboard.dart';"
+  ],
+  [
+    "lib/src/widgets/edge_panel_layer.dart",
+    "child: ShellOskPanel(",
+    "child: Win10xPinyinKeyboard("
+  ],
+  [
+    "lib/src/widgets/edge_panel_layer.dart",
+    "onKey: (intent) => _sendOskIntent(bridge, intent),",
+    "onKey: (intent) => _sendOskIntent(bridge, intent),\n              onShortcut: (stroke) {\n                final held = <String>[];\n                try {\n                  for (final modifier in stroke.modifiers) { bridge.pressKeyboardKey(modifier); held.add(modifier); }\n                  bridge.sendKeyboardKey(stroke.key);\n                } finally {\n                  for (final modifier in held.reversed) { bridge.releaseKeyboardKey(modifier); }\n                }\n              },"
+  ],
+  [
+    "lib/src/widgets/osk/shell_osk_panel.dart",
+    "import 'dart:async';",
+    "import 'dart:async';\nimport 'keyboard_tools.dart';"
+  ],
+  [
+    "lib/src/widgets/osk/shell_osk_panel.dart",
+    "  _Touch(this.key, this.position);",
+    "  _Touch(this.key, this.position);\n  final cursor = SpaceCursorDrag();"
+  ],
+  [
+    "lib/src/widgets/osk/shell_osk_panel.dart",
+    "if (touch == null || touch.done || geometry == null) return;",
+    "if (touch == null || (touch.done && !touch.cursor.active) || geometry == null) return;"
+  ],
+  [
+    "lib/src/widgets/osk/shell_osk_panel.dart",
+    "    touch.position = position;",
+    "    if (touch.key.spec.control == _OskControl.space || touch.cursor.active) {\n      final steps=touch.cursor.update(position.dx-touch.position.dx);\n      if (touch.cursor.active) {\n        _recognizer.claim(pointer);\n        touch.done=true; touch.longPress?.cancel();\n        for (var i=0; i<steps.abs(); i++) { widget.onKeyDown?.call(); widget.onKey?.call(ShellOskKeyIntent.key(steps>0 ? 'Right' : 'Left',ctrl:_ctrlArmed)); }\n      }\n      touch.position=position; return;\n    }\n    touch.position = position;"
+  ]
+]
